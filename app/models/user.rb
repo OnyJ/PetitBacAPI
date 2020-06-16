@@ -7,5 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, 
          :jwt_authenticatable,
          jwt_revocation_strategy: JwtBlacklist
-
+  has_many :histories
+  has_many :games, through: :histories
+  
+  
 end
