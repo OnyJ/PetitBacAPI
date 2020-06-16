@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :histories
   resources :friendships
   resources :invites
   resources :categories
