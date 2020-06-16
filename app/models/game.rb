@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
   # belongs_to :user, as :creator
   # or
-  belongs_to :creator, class_name: "User"
+  belongs_to :user  # which is the creator
 
   # has_many :histories
   # has_many :users, through: :histories

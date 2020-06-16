@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_102625) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "creator_id"
+    t.integer "user_id"
     t.boolean "is_pending"
     t.integer "winner_id"
     t.integer "max_guests"
