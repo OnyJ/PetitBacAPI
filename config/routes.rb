@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :games
   resources :friendships
   resources :invites
   resources :categories
+  resources :join_category_games
 
   devise_for :users,
     path: '',
@@ -17,3 +19,4 @@ Rails.application.routes.draw do
     }
   end
  end
+
