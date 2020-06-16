@@ -43,5 +43,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #personnal gem
 gem 'devise-jwt', '~> 0.6.0'
-gem 'table_print', '~> 1.5', '>= 1.5.6'
+gem 'table_print', '~> 1.5', '>= 1.5.4'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.5'
