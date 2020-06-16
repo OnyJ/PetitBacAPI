@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2020_06_16_102625) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "histories", force: :cascade do |t|
+    t.integer "score"
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_histories_on_game_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
+
   create_table "invites", force: :cascade do |t|
     t.integer "guest_id"
     t.integer "game_id"
@@ -71,4 +81,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_102625) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "histories", "games"
+  add_foreign_key "histories", "users"
 end
