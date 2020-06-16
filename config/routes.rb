@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+<<<<<<< HEAD
   resources :join_category_games
+=======
+>>>>>>> c271aa30701c6927f2f372433d1cdae4d441833b
   resources :games
   resources :friendships
   resources :invites
