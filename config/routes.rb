@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :histories
 
-  resources :games
+  resources :games do 
+    resources :histories, only: [:create, :update]
+  end
   resources :friendships
   resources :categories
   resources :join_category_games
