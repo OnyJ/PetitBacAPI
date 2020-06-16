@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_102625) do
 
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
-    t.boolean "is_pending"
+    t.boolean "is_pending", default: true
     t.integer "winner_id"
     t.integer "max_guests"
     t.datetime "created_at", precision: 6, null: false
