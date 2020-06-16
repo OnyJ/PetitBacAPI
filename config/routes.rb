@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :games
   resources :friendships
-  resources :invites
   resources :categories
   resources :join_category_games
 
@@ -18,6 +17,6 @@ Rails.application.routes.draw do
       sessions: 'sessions',
       registrations: 'registrations'
     }
-  end
+
  end
 
