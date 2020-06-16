@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2020_06_16_102625) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "user_id"
-    t.boolean "is_pending", default: true
+    t.integer "creator_id"
+    t.boolean "is_pending"
     t.integer "winner_id"
     t.integer "max_guests"
     t.datetime "created_at", precision: 6, null: false
@@ -45,13 +45,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_102625) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["game_id"], name: "index_histories_on_game_id"
     t.index ["user_id"], name: "index_histories_on_user_id"
-  end
-
-  create_table "invites", force: :cascade do |t|
-    t.integer "guest_id"
-    t.integer "game_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "join_category_games", force: :cascade do |t|
