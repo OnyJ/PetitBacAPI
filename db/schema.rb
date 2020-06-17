@@ -48,13 +48,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_153124) do
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
-  create_table "invites", force: :cascade do |t|
-    t.integer "guest_id"
-    t.integer "game_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "join_category_games", force: :cascade do |t|
     t.integer "category_id"
     t.integer "game_id"
