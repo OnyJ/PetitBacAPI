@@ -10,7 +10,8 @@ class GamesController < ApplicationController
 
   # GET /games/1
   def show
-    render json: @game
+    category = Game.find(params[:id]).categories
+    render json: [@game, category]
   end
 
   # POST /games
