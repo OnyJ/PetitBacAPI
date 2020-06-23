@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :friendships
   resources :categories
   resources :join_category_games
-
+  mount ActionCable.server, at: '/cable'
   devise_for :users,
     path: '',
     path_names: {
