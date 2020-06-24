@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :responses
   resources :users
   resources :histories
 
