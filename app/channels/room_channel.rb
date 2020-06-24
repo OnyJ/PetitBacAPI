@@ -24,16 +24,19 @@ class RoomChannel < ApplicationCable::Channel
   # end
 
   def received(data)
+ 
     puts '################################################'
-    puts data['game_id']
-    puts params
+     @data = Game.find(params['game_id']).users
+
     puts '################################################'
-    @players = Game.find(params['game_id']).users
+    puts @data
     puts '################################################'
-    puts @players
-    puts '################################################'
-    ActionCable.server.broadcast('room_channel_id', @players)
+    ActionCable.server.broadcast('room_channel_id', @data)
     #DemoChannel.broadcast_to('demo_channel', data)
+  end
+  
+  def starting(data)
+    ActionCable.server.broadcast("room_channel_id", data)
   end
 
   def unsubscribed
