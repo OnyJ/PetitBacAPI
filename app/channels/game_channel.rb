@@ -11,9 +11,9 @@ class GameChannel < ApplicationCable::Channel
     data = data.except('action')
     @user = User.find(params[:user_id])
     @game = Game.find(params[:game_id])
-    data.each do |cat, value|
+    data['answer'].each do |cat, value|
       @category = Category.find_by(name: cat)
-      @response = Response.create(game_id: @game.id, user_id: @user.id, category_id: @category.id, content: value) 
+      @response = Response.create(game_id: @game.id, user_id: @user.id, category_id: @category.id, content: value, nbmarking: data['nbplayers']) 
       # until @response.save
       #   puts @response.save
       #   sleep 1
