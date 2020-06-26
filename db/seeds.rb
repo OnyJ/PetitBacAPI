@@ -9,8 +9,6 @@ User.destroy_all
 Game.destroy_all
 Category.destroy_all
 User.create(email: "test@test.com", password: "lalala",username: "testeur")
-User.create(email: "lala@lala.com", password: "lalala",username: "lalalala")
-["métier","fruits ou légumes","Pays","ville","capitale","objet","sport","animal","marque","artiste musicale","couleur"].each {|category|
+["Métier","Fruit","Légume","Pays","Ville","Capitale","Objet","Sport","Animal","Marque","Chanteur","Acteur","Couleur","Prénom"].each {|category|
     Category.create(name: category)
-    
 }
