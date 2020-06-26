@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_191854) do
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "score", default: 0
+    t.integer "score"
     t.integer "nbmarking", default: 0
     t.index ["category_id"], name: "index_responses_on_category_id"
     t.index ["game_id"], name: "index_responses_on_game_id"

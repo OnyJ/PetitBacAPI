@@ -1,7 +1,7 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    stream_from "room_channel_#{:id}"
+    stream_from "room_channel_#{params[:game_id]}"
 
     @history = History.create(user_id: params[:user_id], game_id: params[:game_id])
     puts '*************************************'
@@ -31,12 +31,12 @@ class RoomChannel < ApplicationCable::Channel
     puts '################################################'
     puts @data
     puts '################################################'
-    ActionCable.server.broadcast('room_channel_id', @data)
+    ActionCable.server.broadcast("room_channel_#{params[:game_id]}", @data)
     #DemoChannel.broadcast_to('demo_channel', data)
   end
   
   def starting(data)
-    ActionCable.server.broadcast("room_channel_id", data)
+    ActionCable.server.broadcast("room_channel_#{params[:game_id]}", data)
   end
 
   def unsubscribed
