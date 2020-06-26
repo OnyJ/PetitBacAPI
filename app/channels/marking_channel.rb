@@ -6,16 +6,24 @@ class MarkingChannel < ApplicationCable::Channel
   end
 
   def received(data)
+    puts "#############################################"
+    puts params
+    puts "#############################################"
+    puts data
+    puts "#############################################"
     data = data.except('action')
-    data['answer'].each do |answer|
+    data["answers"].each do |answer|
       @response = Response.find(answer["id"])
-      @response.update(score: @response.score + answer["score"])
+      if !@response.score.nil?
+        @response.update(score: @response.score + answer["score"], nbmarking: @response.nbmarking + 1 )
+      else
+        @response.update(score: 0 + answer["score"], nbmarking: @response.nbmarking + 1 )  
+      end
       puts @response
     end
-    puts @@cpt
-    puts params["validation"]
-    if params["validation"] - 1 > @@cpt
-      @@cpt += 1
+    @responses = Response.where(game_id: params[:game_id])
+
+    if @responses.any?{|ans| ans.nbmarking != params[:validator] - 1 }
     else
       Response.where(game_id: params[:game_id]).each do |answer|
         if answer.score >= 0
