@@ -43,7 +43,7 @@ group :development do
 end
 
 group :production do
-  gem 'redis', '~> 4.2', '>= 4.2.1'
+  gem 'redis', '4.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
