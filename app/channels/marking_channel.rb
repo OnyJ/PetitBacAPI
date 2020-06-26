@@ -32,6 +32,7 @@ class MarkingChannel < ApplicationCable::Channel
           answer.update(status: false)
         end
       end
+     
       data["stop"] = true
       
     end
