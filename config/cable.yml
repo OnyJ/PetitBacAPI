@@ -7,4 +7,6 @@ test:
 production:
   adapter: redis
   url: redis://redistogo:bb027be205751673bb8007f7e19a7b2c@pike.redistogo.com:10551/
-  #channel_prefix: PetitBacAPI_production
+  channel_prefix: PetitBacAPI_production
+
+
