@@ -5,4 +5,5 @@ class Game < ApplicationRecord
   has_many :users, through: :histories
   has_many :join_category_game, dependent: :destroy
   has_many :categories, through: :join_category_game
+  has_many :responses
 end
