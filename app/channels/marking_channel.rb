@@ -14,9 +14,7 @@ class MarkingChannel < ApplicationCable::Channel
     end
     puts @@cpt
     puts params["validation"]
-    if params["validation"] - 1 > @@cpt
-      @@cpt += 1
-    else
+    if !(params["validation"] - 1 > @@cpt) 
       Response.where(game_id: params[:game_id]).each do |answer|
         if answer.score >= 0
           answer.update(status: true)
@@ -24,6 +22,7 @@ class MarkingChannel < ApplicationCable::Channel
           answer.update(status: false)
         end
       end
+      @@cpt += 1
       data["stop"] = true
       
     end
