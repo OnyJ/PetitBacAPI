@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_191854) do
+ActiveRecord::Schema.define(version: 2020_06_28_085817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_191854) do
     t.integer "max_guests"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "letter"
   end
 
   create_table "histories", force: :cascade do |t|
@@ -61,6 +68,14 @@ ActiveRecord::Schema.define(version: 2020_06_25_191854) do
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "text"
+    t.bigint "conversation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+  end
+
   create_table "responses", force: :cascade do |t|
     t.boolean "status"
     t.bigint "category_id", null: false
@@ -69,11 +84,17 @@ ActiveRecord::Schema.define(version: 2020_06_25_191854) do
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "score"
+    t.integer "score", default: 0
     t.integer "nbmarking", default: 0
     t.index ["category_id"], name: "index_responses_on_category_id"
     t.index ["game_id"], name: "index_responses_on_game_id"
     t.index ["user_id"], name: "index_responses_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,6 +118,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_191854) do
 
   add_foreign_key "histories", "games"
   add_foreign_key "histories", "users"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "responses", "categories"
   add_foreign_key "responses", "games"
   add_foreign_key "responses", "users"
